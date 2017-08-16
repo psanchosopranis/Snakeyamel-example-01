@@ -1,0 +1,12 @@
+%YAML 1.1
+---
+!!es.pssstests.ejemplo.componentes.Receptor
+nombre: Juan Hernández Pérez-Tuñón
+pFisJur: F
+idFiscal: 22222222X  
+direccion:
+  linea1: 'Martínez Villergas, 52. Edificio B - Planta 6' 
+  localidad: MADRID
+  codigoPostal: '28027'  
+  provincia: MADRID
+  telefono1: +34 91 556 0013

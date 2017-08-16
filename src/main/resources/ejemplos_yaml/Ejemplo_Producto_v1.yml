@@ -1,0 +1,18 @@
+%YAML 1.1
+---
+!!es.pssstests.ejemplo.componentes.Producto
+referencia: dg-161034_640
+denominacion: Vaso de Agua boca ancha terminación recta
+cantidad: 2
+unidadMedida: PZA
+precioUnitario: 1.24
+porcentajeIVA: 16.00
+baseImponible: 2.48
+importeIVA: 0.40
+importe: 2.88
+imagen: !!binary |-
+  iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAWSURBVBhXY3wro8IAA0xQGgxwcRgYADyXATVh2PuuAAAAAElFTkSuQmCC
+descripcion: 
+- 'Vaso de cristal transparente de alta resistencia a golpes y cambios bruscos de temperatura.'
+- 'Válido para lavavajillas.'
+- 'Disponible en color transparente y azul translúcido.'  
