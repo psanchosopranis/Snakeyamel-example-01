@@ -15,6 +15,61 @@ Los ejemplos incluidos muestran la serialización hacia documentos YAML así com
 Por otra parte, otro campo de especial interés es su utilización en el ámbito de proyectos basados en [Apache Camel](http://camel.apache.org/). Ver apartado [Apache Camel > Documentation > Architecture > Data Format > YAML Data Format
 ](http://camel.apache.org/yaml-data-format.html)
 
+## Serialización y Construcción
+
+Se recomienda leer la excelente [documentación](https://bitbucket.org/asomov/snakeyaml/wiki/Documentation) del propio proyecto de `snakeyaml` para ver las diferentes opciones pero como _'pincelada'_ puede verse en los ejemplos:
+
+* Serialización: Método `dump` a `String` de un objeto que cumple especificación JavaBean
+
+```
+			yaml = new Yaml();
+			String facturaAsYamlString = yaml.dump(factura);
+```
+
+Con gobierno de formato:
+
+```
+			System.out.println("\n===================================================");
+			System.out.println("Utilizaremos ahora una forma de serialización YAML:");
+			System.out.println("Con 'DumperOptions':");
+			System.out.println(" - 'FlowStyle.FLOW'"); 
+			System.out.println(" - 'setPrettyFlow(true)'");
+			System.out.println("===================================================\n");			
+			DumperOptions options = new DumperOptions();
+			options.setDefaultFlowStyle(DumperOptions.FlowStyle.FLOW);
+			options.setPrettyFlow(true);
+			yaml = new Yaml(options);
+			System.out.println(yaml.dump(factura));
+
+			System.out.println("\n===================================================");
+			System.out.println("Utilizaremos ahora una forma de serialización YAML:");
+			System.out.println("Con 'DumperOptions':");
+			System.out.println(" - 'FlowStyle.BLOCK'"); 
+			System.out.println(" - 'setPrettyFlow(true)'");
+			System.out.println(" - 'options.setIndent(4)'");
+			System.out.println("===================================================\n");	
+			options = new DumperOptions();
+			options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
+			options.setPrettyFlow(true);
+			options.setIndent(4);
+			yaml = new Yaml(options);
+			System.out.println(yaml.dump(factura));
+```
+
+
+> Nota: si ese String ha de persistirse como archivo recuérdese de asegurar utilizar su encoding a 'UTF-8' `( ..getBytes("UTF-8") )` dado que es el `encoding` estandar de la especificación YAML 
+
+* Construcción: Método `load` (desde `String` o, en general, desde un `InputStream`) de un objeto `Yaml` construido en base a un `Constructor` de un objeto que cumple especificación JavaBean:
+
+```
+			String archivoYAMLComoRecurso = "/ejemplos_yaml/Ejemplo_Factura_v2.yml";			
+			yaml = new Yaml(new Constructor(Factura.class));
+			factura = (Factura) yaml.load(ClassLoader.class.getResourceAsStream(archivoYAMLComoRecurso));
+
+```
+
+> Nota: este formato de construcción permite igualmente incorporar`opciones`
+
 ## Ejemplo 01: Ejemplo01SerializacionConstruccionDireccion
 * package: es.pssstests.ejemplo.ejecutables
 * topico: Serialización/Construcción objeto `Direccion`
